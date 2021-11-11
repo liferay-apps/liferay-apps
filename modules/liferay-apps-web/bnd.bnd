@@ -1,0 +1,4 @@
+Bundle-Name: liferay-apps-web
+Bundle-SymbolicName: com.liferay.apps.web
+Bundle-Version: 1.0.0
+Export-Package: com.liferay.apps.web.constants

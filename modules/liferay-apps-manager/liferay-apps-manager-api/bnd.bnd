@@ -1,0 +1,10 @@
+Bundle-Name: liferay-apps-manager-api
+Bundle-SymbolicName: com.liferay.apps.manager.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.liferay.apps.manager.exception,\
+	com.liferay.apps.manager.model,\
+	com.liferay.apps.manager.service,\
+	com.liferay.apps.manager.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../liferay-apps-manager-service/service.xml

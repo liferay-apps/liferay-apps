@@ -1,0 +1,11 @@
+dependencies {
+	compile project(":modules:liferay-apps-manager:liferay-apps-manager-api")
+
+	compileOnly group: "com.liferay.portal", name: "release.portal.api"
+}
+
+buildService {
+	apiDir = "../liferay-apps-manager-api/src/main/java"
+}
+
+group = "com.liferay.apps.manager"

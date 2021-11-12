@@ -17,8 +17,8 @@ package com.liferay.apps.manager.service.impl;
 import com.liferay.apps.manager.model.App;
 import com.liferay.apps.manager.service.base.AppLocalServiceBaseImpl;
 import com.liferay.portal.aop.AopService;
-
 import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.model.ResourceConstants;
 import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.util.DateUtil;
@@ -72,6 +72,19 @@ public class AppLocalServiceImpl extends AppLocalServiceBaseImpl {
 
 		app = appLocalService.updateApp(app);
 
+		// Resources
+		if (serviceContext.isAddGroupPermissions() || serviceContext.isAddGuestPermissions()) {
+			resourceLocalService.addResources(
+					app.getCompanyId(), app.getGroupId(), app.getUserId(),
+					App.class.getName(), app.getAppId(), false,
+					serviceContext.isAddGroupPermissions(), serviceContext.isAddGuestPermissions());
+		}
+		else {
+			resourceLocalService.addModelResources(
+					app.getCompanyId(), app.getGroupId(), app.getUserId(),
+					App.class.getName(), app.getAppId(), serviceContext.getModelPermissions());
+		}
+
 		return app;
 	}
 
@@ -90,6 +103,30 @@ public class AppLocalServiceImpl extends AppLocalServiceBaseImpl {
 		app.setLink(link);
 
 		app = appLocalService.updateApp(app);
+
+		return app;
+	}
+
+	public App deleteApp(App app) throws PortalException {
+
+		// App
+		appPersistence.remove(app);
+
+		// Resources
+
+		resourceLocalService.deleteResource(
+				app.getCompanyId(), App.class.getName(),
+				ResourceConstants.SCOPE_INDIVIDUAL, app.getAppId());
+
+		// Asset
+
+		// Expando
+
+		// Friendly URL
+
+		// Trash
+
+		// Workflow
 
 		return app;
 	}

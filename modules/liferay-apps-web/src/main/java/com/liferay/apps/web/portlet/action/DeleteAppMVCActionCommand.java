@@ -1,5 +1,6 @@
 package com.liferay.apps.web.portlet.action;
 
+import com.liferay.apps.manager.model.App;
 import com.liferay.apps.manager.service.AppLocalService;
 import com.liferay.apps.web.constants.AppManagerPortletKeys;
 import com.liferay.portal.kernel.portlet.bridges.mvc.BaseMVCActionCommand;
@@ -24,7 +25,10 @@ public class DeleteAppMVCActionCommand extends BaseMVCActionCommand {
     @Override
     protected void doProcessAction(ActionRequest actionRequest, ActionResponse actionResponse) throws Exception {
         long appId = ParamUtil.getLong(actionRequest, "appId");
-        appLocalService.deleteApp(appId);
+        App app = appLocalService.fetchApp(appId);
+        if (app != null) {
+            appLocalService.deleteApp(app);
+        }
     }
 
     @Reference

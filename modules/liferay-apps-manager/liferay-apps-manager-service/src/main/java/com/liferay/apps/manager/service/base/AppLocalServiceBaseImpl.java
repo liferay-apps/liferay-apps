@@ -145,10 +145,11 @@ public abstract class AppLocalServiceBaseImpl
 	 *
 	 * @param app the app
 	 * @return the app that was removed
+	 * @throws PortalException
 	 */
 	@Indexable(type = IndexableType.DELETE)
 	@Override
-	public App deleteApp(App app) {
+	public App deleteApp(App app) throws PortalException {
 		return appPersistence.remove(app);
 	}
 

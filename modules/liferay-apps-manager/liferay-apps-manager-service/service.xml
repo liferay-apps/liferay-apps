@@ -3,6 +3,7 @@
 
 <service-builder dependency-injector="ds"
 				 mvcc-enabled="true"
+				 auto-namespace-tables="false"
 				 package-path="com.liferay.apps.manager">
 
 	<author>LifeDev</author>

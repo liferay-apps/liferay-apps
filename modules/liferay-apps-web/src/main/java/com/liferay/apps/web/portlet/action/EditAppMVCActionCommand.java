@@ -19,7 +19,7 @@ import javax.portlet.ActionResponse;
 @Component(
         immediate = true,
         property = {
-                "javax.portlet.name=" + AppManagerPortletKeys.PORTLET_ID,
+                "javax.portlet.name=" + AppManagerPortletKeys.APP_MANAGER,
                 "mvc.command.name=/apps/update"
         },
         service = MVCActionCommand.class

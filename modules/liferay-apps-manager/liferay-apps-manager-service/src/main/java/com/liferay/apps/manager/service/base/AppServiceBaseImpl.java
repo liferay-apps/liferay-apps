@@ -167,6 +167,10 @@ public abstract class AppServiceBaseImpl
 		assetEntryService;
 
 	@Reference
+	protected com.liferay.asset.kernel.service.AssetLinkLocalService
+		assetLinkLocalService;
+
+	@Reference
 	protected com.liferay.asset.kernel.service.AssetTagLocalService
 		assetTagLocalService;
 

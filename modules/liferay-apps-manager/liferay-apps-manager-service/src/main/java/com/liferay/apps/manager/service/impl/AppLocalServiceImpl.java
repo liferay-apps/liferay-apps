@@ -16,11 +16,16 @@ package com.liferay.apps.manager.service.impl;
 
 import com.liferay.apps.manager.model.App;
 import com.liferay.apps.manager.service.base.AppLocalServiceBaseImpl;
+import com.liferay.asset.kernel.model.AssetEntry;
+import com.liferay.asset.kernel.model.AssetLinkConstants;
 import com.liferay.portal.aop.AopService;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.model.ResourceConstants;
 import com.liferay.portal.kernel.model.User;
+import com.liferay.portal.kernel.search.Indexable;
+import com.liferay.portal.kernel.search.IndexableType;
 import com.liferay.portal.kernel.service.ServiceContext;
+import com.liferay.portal.kernel.util.ContentTypes;
 import com.liferay.portal.kernel.util.DateUtil;
 import org.osgi.service.component.annotations.Component;
 
@@ -47,6 +52,7 @@ public class AppLocalServiceImpl extends AppLocalServiceBaseImpl {
 		return appPersistence.findByGroupId(groupId, start, end);
 	}
 
+	@Indexable(type = IndexableType.REINDEX)
 	public App addApp(long userId, String name, String description, String iconUrl, String link, ServiceContext serviceContext) throws PortalException {
 
 		User user = userLocalService.getUser(userId);
@@ -73,21 +79,15 @@ public class AppLocalServiceImpl extends AppLocalServiceBaseImpl {
 		app = appLocalService.updateApp(app);
 
 		// Resources
-		if (serviceContext.isAddGroupPermissions() || serviceContext.isAddGuestPermissions()) {
-			resourceLocalService.addResources(
-					app.getCompanyId(), app.getGroupId(), app.getUserId(),
-					App.class.getName(), app.getAppId(), false,
-					serviceContext.isAddGroupPermissions(), serviceContext.isAddGuestPermissions());
-		}
-		else {
-			resourceLocalService.addModelResources(
-					app.getCompanyId(), app.getGroupId(), app.getUserId(),
-					App.class.getName(), app.getAppId(), serviceContext.getModelPermissions());
-		}
+		addResources(serviceContext, app);
+
+		// Asset
+		updateAsset(userId, serviceContext, app);
 
 		return app;
 	}
 
+	@Indexable(type = IndexableType.REINDEX)
 	public App updateApp(long userId, long appId, String name, String description, String iconUrl, String link, ServiceContext serviceContext) throws PortalException {
 
 		App app = appPersistence.findByPrimaryKey(appId);
@@ -104,9 +104,14 @@ public class AppLocalServiceImpl extends AppLocalServiceBaseImpl {
 
 		app = appLocalService.updateApp(app);
 
+		// Asset
+		updateAsset(userId, serviceContext, app);
+
 		return app;
 	}
 
+	@Indexable(type = IndexableType.DELETE)
+	@Override
 	public App deleteApp(App app) throws PortalException {
 
 		// App
@@ -120,6 +125,8 @@ public class AppLocalServiceImpl extends AppLocalServiceBaseImpl {
 
 		// Asset
 
+		assetEntryLocalService.deleteEntry(App.class.getName(), app.getAppId());
+
 		// Expando
 
 		// Friendly URL
@@ -129,6 +136,35 @@ public class AppLocalServiceImpl extends AppLocalServiceBaseImpl {
 		// Workflow
 
 		return app;
+	}
+
+
+
+	private void addResources(ServiceContext serviceContext, App app) throws PortalException {
+		if (serviceContext.isAddGroupPermissions() || serviceContext.isAddGuestPermissions()) {
+			resourceLocalService.addResources(
+					app.getCompanyId(), app.getGroupId(), app.getUserId(),
+					App.class.getName(), app.getAppId(), false,
+					serviceContext.isAddGroupPermissions(), serviceContext.isAddGuestPermissions());
+		}
+		else {
+			resourceLocalService.addModelResources(
+					app.getCompanyId(), app.getGroupId(), app.getUserId(),
+					App.class.getName(), app.getAppId(), serviceContext.getModelPermissions());
+		}
+	}
+
+	private void updateAsset(long userId, ServiceContext serviceContext, App app) throws PortalException {
+		AssetEntry assetEntry = assetEntryLocalService.updateEntry(
+				userId, app.getGroupId(), app.getCreateDate(), app.getModifiedDate(), App.class.getName(),
+				app.getAppId(), app.getUuid(), 0, serviceContext.getAssetCategoryIds(),
+				serviceContext.getAssetTagNames(), true, true, null, null, null,
+				null, ContentTypes.TEXT_HTML, app.getName(), app.getDescription(), app.getName(),
+				null, null, 0, 0, serviceContext.getAssetPriority()
+		);
+		assetLinkLocalService.updateLinks(
+				userId, assetEntry.getEntryId(), serviceContext.getAssetLinkEntryIds(),
+				AssetLinkConstants.TYPE_RELATED);
 	}
 
 }

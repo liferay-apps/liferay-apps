@@ -11,6 +11,7 @@ import org.osgi.service.component.annotations.Component;
 @Component(
 	immediate = true,
 	property = {
+			"com.liferay.portlet.add-default-resource=true",
 			"com.liferay.portlet.display-category=" + AppManagerPortletKeys.CATEGORY_NAME,
 			"com.liferay.portlet.instanceable=false",
 			"javax.portlet.display-name=" + AppManagerPortletKeys.DISPLAY_NAME,

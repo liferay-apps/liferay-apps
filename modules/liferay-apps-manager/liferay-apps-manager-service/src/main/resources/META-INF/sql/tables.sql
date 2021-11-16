@@ -14,6 +14,6 @@ create table App (
 	statusDate DATE null,
 	name VARCHAR(75) null,
 	description VARCHAR(500) null,
-	iconUrl VARCHAR(75) null,
-	link VARCHAR(75) null
+	iconUrl VARCHAR(255) null,
+	link VARCHAR(255) null
 );

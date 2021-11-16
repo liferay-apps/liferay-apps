@@ -145,10 +145,11 @@ public abstract class AppLocalServiceBaseImpl
 	 *
 	 * @param app the app
 	 * @return the app that was removed
+	 * @throws PortalException
 	 */
 	@Indexable(type = IndexableType.DELETE)
 	@Override
-	public App deleteApp(App app) {
+	public App deleteApp(App app) throws PortalException {
 		return appPersistence.remove(app);
 	}
 
@@ -639,6 +640,10 @@ public abstract class AppLocalServiceBaseImpl
 	@Reference
 	protected com.liferay.asset.kernel.service.AssetEntryLocalService
 		assetEntryLocalService;
+
+	@Reference
+	protected com.liferay.asset.kernel.service.AssetLinkLocalService
+		assetLinkLocalService;
 
 	@Reference
 	protected com.liferay.asset.kernel.service.AssetTagLocalService

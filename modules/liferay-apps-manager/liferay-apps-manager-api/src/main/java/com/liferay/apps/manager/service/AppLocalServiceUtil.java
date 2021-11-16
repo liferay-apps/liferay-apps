@@ -102,8 +102,9 @@ public class AppLocalServiceUtil {
 	 *
 	 * @param app the app
 	 * @return the app that was removed
+	 * @throws PortalException
 	 */
-	public static App deleteApp(App app) {
+	public static App deleteApp(App app) throws PortalException {
 		return getService().deleteApp(app);
 	}
 

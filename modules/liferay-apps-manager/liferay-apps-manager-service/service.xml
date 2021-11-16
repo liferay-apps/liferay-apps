@@ -3,6 +3,7 @@
 
 <service-builder dependency-injector="ds"
 				 mvcc-enabled="true"
+				 auto-namespace-tables="false"
 				 package-path="com.liferay.apps.manager">
 
 	<author>LifeDev</author>
@@ -49,5 +50,6 @@
 		<!-- References -->
 		<reference entity="AssetEntry" package-path="com.liferay.portlet.asset" />
 		<reference entity="AssetTag" package-path="com.liferay.portlet.asset" />
+		<reference entity="AssetLink" package-path="com.liferay.portlet.asset" />
 	</entity>
 </service-builder>

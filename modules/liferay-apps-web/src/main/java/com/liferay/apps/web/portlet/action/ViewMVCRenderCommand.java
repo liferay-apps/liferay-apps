@@ -11,7 +11,7 @@ import javax.portlet.RenderResponse;
 @Component(
         immediate = true,
         property = {
-                "javax.portlet.name=" + AppManagerPortletKeys.PORTLET_ID,
+                "javax.portlet.name=" + AppManagerPortletKeys.APP_MANAGER,
                 "mvc.command.name=/",
                 "mvc.command.name=/apps/view"
         },

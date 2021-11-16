@@ -1,7 +1,8 @@
-Bundle-Name: liferay-apps-manager-api
+Bundle-Name: Liferay Apps Manager API
 Bundle-SymbolicName: com.liferay.apps.manager.api
 Bundle-Version: 1.0.0
 Export-Package:\
+	com.liferay.apps.manager.constants,\
 	com.liferay.apps.manager.exception,\
 	com.liferay.apps.manager.model,\
 	com.liferay.apps.manager.service,\

@@ -94,10 +94,12 @@ public class AppLocalServiceWrapper
 	 *
 	 * @param app the app
 	 * @return the app that was removed
+	 * @throws PortalException
 	 */
 	@Override
 	public com.liferay.apps.manager.model.App deleteApp(
-		com.liferay.apps.manager.model.App app) {
+			com.liferay.apps.manager.model.App app)
+		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _appLocalService.deleteApp(app);
 	}

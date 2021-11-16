@@ -6,7 +6,7 @@ public class AppManagerPortletKeys {
 
 	public static final String DISPLAY_NAME = "App Manager";
 
-	public static final String PORTLET_ID = "com_liferay_apps_web_portlet_AppManagerPortlet";
+	public static final String APP_MANAGER = "com_liferay_apps_web_portlet_AppManagerPortlet";
 
 	public static final String CSS_CLASS_WRAPPER = "app-manager";
 

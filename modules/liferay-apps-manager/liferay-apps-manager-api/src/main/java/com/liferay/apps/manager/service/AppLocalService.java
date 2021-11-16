@@ -109,9 +109,10 @@ public interface AppLocalService
 	 *
 	 * @param app the app
 	 * @return the app that was removed
+	 * @throws PortalException
 	 */
 	@Indexable(type = IndexableType.DELETE)
-	public App deleteApp(App app);
+	public App deleteApp(App app) throws PortalException;
 
 	/**
 	 * Deletes the app with the primary key from the database. Also notifies the appropriate model listeners.

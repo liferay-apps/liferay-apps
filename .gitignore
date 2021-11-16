@@ -13,6 +13,8 @@
 **/.web_bundle_build
 .gradle
 .idea
+/_etc
+/_scripts
 /_src
 /bundles
 /gradle-*.properties

@@ -1,0 +1,71 @@
+components:
+  schemas:
+    App:
+      description: An app
+      properties:
+        appId:
+          format: int64
+          type: integer
+          description: Application ID
+          example: 10161
+        appName:
+          description: An application name
+          type: string
+          example: Facebook
+        appDescription:
+          description: An application description
+          type: string
+          example: Facebook App
+        appLink:
+          description: An application link
+          type: string
+          example: http://facebook.com
+      type: object
+info:
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+  title: "Headless Apps"
+  version: v1.0
+openapi: 3.0.1
+paths:
+  "/apps":
+    get:
+      description:
+        Retrieves the apps.
+      operationId: getApps
+      parameters:
+        - in: query
+          name: filter
+          schema:
+            type: string
+        - in: query
+          name: page
+          schema:
+            type: integer
+        - in: query
+          name: pageSize
+          schema:
+            type: integer
+        - in: query
+          name: search
+          schema:
+            type: string
+        - in: query
+          name: sort
+          schema:
+            type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/App"
+                type: array
+            application/xml:
+              schema:
+                items:
+                  $ref: "#/components/schemas/App"
+                type: array
+      tags: ["App"]

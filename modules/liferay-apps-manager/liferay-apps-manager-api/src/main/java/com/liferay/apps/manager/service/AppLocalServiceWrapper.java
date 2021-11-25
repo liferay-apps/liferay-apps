@@ -63,6 +63,11 @@ public class AppLocalServiceWrapper
 		return _appLocalService.countApps(groupId);
 	}
 
+	@Override
+	public int countApps(long groupId, int status) {
+		return _appLocalService.countApps(groupId, status);
+	}
+
 	/**
 	 * Creates a new app with the primary key. Does not add the app to the database.
 	 *
@@ -322,6 +327,20 @@ public class AppLocalServiceWrapper
 		return _appLocalService.getApps(groupId, start, end);
 	}
 
+	@Override
+	public java.util.List<com.liferay.apps.manager.model.App> getAppsByStatus(
+		long groupId, int status) {
+
+		return _appLocalService.getAppsByStatus(groupId, status);
+	}
+
+	@Override
+	public java.util.List<com.liferay.apps.manager.model.App> getAppsByStatus(
+		long groupId, int status, int start, int end) {
+
+		return _appLocalService.getAppsByStatus(groupId, status, start, end);
+	}
+
 	/**
 	 * Returns all the apps matching the UUID and company.
 	 *
@@ -431,6 +450,17 @@ public class AppLocalServiceWrapper
 
 		return _appLocalService.updateApp(
 			userId, appId, name, description, iconUrl, link, serviceContext);
+	}
+
+	@Override
+	public com.liferay.apps.manager.model.App updateStatus(
+			long userId, long appId, int status,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext,
+			java.util.Map<String, java.io.Serializable> workflowContext)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _appLocalService.updateStatus(
+			userId, appId, status, serviceContext, workflowContext);
 	}
 
 	@Override

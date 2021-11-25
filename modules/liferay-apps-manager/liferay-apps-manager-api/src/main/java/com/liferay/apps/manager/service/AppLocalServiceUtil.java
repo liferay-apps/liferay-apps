@@ -24,6 +24,7 @@ import com.liferay.portal.kernel.util.OrderByComparator;
 import java.io.Serializable;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Provides the local service utility for App. This utility wraps
@@ -71,6 +72,10 @@ public class AppLocalServiceUtil {
 
 	public static int countApps(long groupId) {
 		return getService().countApps(groupId);
+	}
+
+	public static int countApps(long groupId, int status) {
+		return getService().countApps(groupId, status);
 	}
 
 	/**
@@ -287,6 +292,16 @@ public class AppLocalServiceUtil {
 		return getService().getApps(groupId, start, end);
 	}
 
+	public static List<App> getAppsByStatus(long groupId, int status) {
+		return getService().getAppsByStatus(groupId, status);
+	}
+
+	public static List<App> getAppsByStatus(
+		long groupId, int status, int start, int end) {
+
+		return getService().getAppsByStatus(groupId, status, start, end);
+	}
+
 	/**
 	 * Returns all the apps matching the UUID and company.
 	 *
@@ -382,6 +397,16 @@ public class AppLocalServiceUtil {
 
 		return getService().updateApp(
 			userId, appId, name, description, iconUrl, link, serviceContext);
+	}
+
+	public static App updateStatus(
+			long userId, long appId, int status,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext,
+			Map<String, Serializable> workflowContext)
+		throws PortalException {
+
+		return getService().updateStatus(
+			userId, appId, status, serviceContext, workflowContext);
 	}
 
 	public static AppLocalService getService() {

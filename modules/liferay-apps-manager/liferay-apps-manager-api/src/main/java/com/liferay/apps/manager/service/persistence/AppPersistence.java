@@ -589,6 +589,450 @@ public interface AppPersistence extends BasePersistence<App> {
 	public int filterCountByGroupId(long groupId);
 
 	/**
+	 * Returns all the apps where groupId = &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @return the matching apps
+	 */
+	public java.util.List<App> findByG_S(long groupId, int status);
+
+	/**
+	 * Returns a range of all the apps where groupId = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>AppModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param start the lower bound of the range of apps
+	 * @param end the upper bound of the range of apps (not inclusive)
+	 * @return the range of matching apps
+	 */
+	public java.util.List<App> findByG_S(
+		long groupId, int status, int start, int end);
+
+	/**
+	 * Returns an ordered range of all the apps where groupId = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>AppModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param start the lower bound of the range of apps
+	 * @param end the upper bound of the range of apps (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching apps
+	 */
+	public java.util.List<App> findByG_S(
+		long groupId, int status, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<App>
+			orderByComparator);
+
+	/**
+	 * Returns an ordered range of all the apps where groupId = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>AppModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param start the lower bound of the range of apps
+	 * @param end the upper bound of the range of apps (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching apps
+	 */
+	public java.util.List<App> findByG_S(
+		long groupId, int status, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<App> orderByComparator,
+		boolean useFinderCache);
+
+	/**
+	 * Returns the first app in the ordered set where groupId = &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching app
+	 * @throws NoSuchAppException if a matching app could not be found
+	 */
+	public App findByG_S_First(
+			long groupId, int status,
+			com.liferay.portal.kernel.util.OrderByComparator<App>
+				orderByComparator)
+		throws NoSuchAppException;
+
+	/**
+	 * Returns the first app in the ordered set where groupId = &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching app, or <code>null</code> if a matching app could not be found
+	 */
+	public App fetchByG_S_First(
+		long groupId, int status,
+		com.liferay.portal.kernel.util.OrderByComparator<App>
+			orderByComparator);
+
+	/**
+	 * Returns the last app in the ordered set where groupId = &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching app
+	 * @throws NoSuchAppException if a matching app could not be found
+	 */
+	public App findByG_S_Last(
+			long groupId, int status,
+			com.liferay.portal.kernel.util.OrderByComparator<App>
+				orderByComparator)
+		throws NoSuchAppException;
+
+	/**
+	 * Returns the last app in the ordered set where groupId = &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching app, or <code>null</code> if a matching app could not be found
+	 */
+	public App fetchByG_S_Last(
+		long groupId, int status,
+		com.liferay.portal.kernel.util.OrderByComparator<App>
+			orderByComparator);
+
+	/**
+	 * Returns the apps before and after the current app in the ordered set where groupId = &#63; and status = &#63;.
+	 *
+	 * @param appId the primary key of the current app
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next app
+	 * @throws NoSuchAppException if a app with the primary key could not be found
+	 */
+	public App[] findByG_S_PrevAndNext(
+			long appId, long groupId, int status,
+			com.liferay.portal.kernel.util.OrderByComparator<App>
+				orderByComparator)
+		throws NoSuchAppException;
+
+	/**
+	 * Returns all the apps that the user has permission to view where groupId = &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @return the matching apps that the user has permission to view
+	 */
+	public java.util.List<App> filterFindByG_S(long groupId, int status);
+
+	/**
+	 * Returns a range of all the apps that the user has permission to view where groupId = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>AppModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param start the lower bound of the range of apps
+	 * @param end the upper bound of the range of apps (not inclusive)
+	 * @return the range of matching apps that the user has permission to view
+	 */
+	public java.util.List<App> filterFindByG_S(
+		long groupId, int status, int start, int end);
+
+	/**
+	 * Returns an ordered range of all the apps that the user has permissions to view where groupId = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>AppModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param start the lower bound of the range of apps
+	 * @param end the upper bound of the range of apps (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching apps that the user has permission to view
+	 */
+	public java.util.List<App> filterFindByG_S(
+		long groupId, int status, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<App>
+			orderByComparator);
+
+	/**
+	 * Returns the apps before and after the current app in the ordered set of apps that the user has permission to view where groupId = &#63; and status = &#63;.
+	 *
+	 * @param appId the primary key of the current app
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next app
+	 * @throws NoSuchAppException if a app with the primary key could not be found
+	 */
+	public App[] filterFindByG_S_PrevAndNext(
+			long appId, long groupId, int status,
+			com.liferay.portal.kernel.util.OrderByComparator<App>
+				orderByComparator)
+		throws NoSuchAppException;
+
+	/**
+	 * Removes all the apps where groupId = &#63; and status = &#63; from the database.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 */
+	public void removeByG_S(long groupId, int status);
+
+	/**
+	 * Returns the number of apps where groupId = &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @return the number of matching apps
+	 */
+	public int countByG_S(long groupId, int status);
+
+	/**
+	 * Returns the number of apps that the user has permission to view where groupId = &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @return the number of matching apps that the user has permission to view
+	 */
+	public int filterCountByG_S(long groupId, int status);
+
+	/**
+	 * Returns all the apps where groupId = &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @return the matching apps
+	 */
+	public java.util.List<App> findByG_NotS(long groupId, int status);
+
+	/**
+	 * Returns a range of all the apps where groupId = &#63; and status &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>AppModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param start the lower bound of the range of apps
+	 * @param end the upper bound of the range of apps (not inclusive)
+	 * @return the range of matching apps
+	 */
+	public java.util.List<App> findByG_NotS(
+		long groupId, int status, int start, int end);
+
+	/**
+	 * Returns an ordered range of all the apps where groupId = &#63; and status &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>AppModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param start the lower bound of the range of apps
+	 * @param end the upper bound of the range of apps (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching apps
+	 */
+	public java.util.List<App> findByG_NotS(
+		long groupId, int status, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<App>
+			orderByComparator);
+
+	/**
+	 * Returns an ordered range of all the apps where groupId = &#63; and status &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>AppModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param start the lower bound of the range of apps
+	 * @param end the upper bound of the range of apps (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching apps
+	 */
+	public java.util.List<App> findByG_NotS(
+		long groupId, int status, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<App> orderByComparator,
+		boolean useFinderCache);
+
+	/**
+	 * Returns the first app in the ordered set where groupId = &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching app
+	 * @throws NoSuchAppException if a matching app could not be found
+	 */
+	public App findByG_NotS_First(
+			long groupId, int status,
+			com.liferay.portal.kernel.util.OrderByComparator<App>
+				orderByComparator)
+		throws NoSuchAppException;
+
+	/**
+	 * Returns the first app in the ordered set where groupId = &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching app, or <code>null</code> if a matching app could not be found
+	 */
+	public App fetchByG_NotS_First(
+		long groupId, int status,
+		com.liferay.portal.kernel.util.OrderByComparator<App>
+			orderByComparator);
+
+	/**
+	 * Returns the last app in the ordered set where groupId = &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching app
+	 * @throws NoSuchAppException if a matching app could not be found
+	 */
+	public App findByG_NotS_Last(
+			long groupId, int status,
+			com.liferay.portal.kernel.util.OrderByComparator<App>
+				orderByComparator)
+		throws NoSuchAppException;
+
+	/**
+	 * Returns the last app in the ordered set where groupId = &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching app, or <code>null</code> if a matching app could not be found
+	 */
+	public App fetchByG_NotS_Last(
+		long groupId, int status,
+		com.liferay.portal.kernel.util.OrderByComparator<App>
+			orderByComparator);
+
+	/**
+	 * Returns the apps before and after the current app in the ordered set where groupId = &#63; and status &ne; &#63;.
+	 *
+	 * @param appId the primary key of the current app
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next app
+	 * @throws NoSuchAppException if a app with the primary key could not be found
+	 */
+	public App[] findByG_NotS_PrevAndNext(
+			long appId, long groupId, int status,
+			com.liferay.portal.kernel.util.OrderByComparator<App>
+				orderByComparator)
+		throws NoSuchAppException;
+
+	/**
+	 * Returns all the apps that the user has permission to view where groupId = &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @return the matching apps that the user has permission to view
+	 */
+	public java.util.List<App> filterFindByG_NotS(long groupId, int status);
+
+	/**
+	 * Returns a range of all the apps that the user has permission to view where groupId = &#63; and status &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>AppModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param start the lower bound of the range of apps
+	 * @param end the upper bound of the range of apps (not inclusive)
+	 * @return the range of matching apps that the user has permission to view
+	 */
+	public java.util.List<App> filterFindByG_NotS(
+		long groupId, int status, int start, int end);
+
+	/**
+	 * Returns an ordered range of all the apps that the user has permissions to view where groupId = &#63; and status &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>AppModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param start the lower bound of the range of apps
+	 * @param end the upper bound of the range of apps (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching apps that the user has permission to view
+	 */
+	public java.util.List<App> filterFindByG_NotS(
+		long groupId, int status, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<App>
+			orderByComparator);
+
+	/**
+	 * Returns the apps before and after the current app in the ordered set of apps that the user has permission to view where groupId = &#63; and status &ne; &#63;.
+	 *
+	 * @param appId the primary key of the current app
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next app
+	 * @throws NoSuchAppException if a app with the primary key could not be found
+	 */
+	public App[] filterFindByG_NotS_PrevAndNext(
+			long appId, long groupId, int status,
+			com.liferay.portal.kernel.util.OrderByComparator<App>
+				orderByComparator)
+		throws NoSuchAppException;
+
+	/**
+	 * Removes all the apps where groupId = &#63; and status &ne; &#63; from the database.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 */
+	public void removeByG_NotS(long groupId, int status);
+
+	/**
+	 * Returns the number of apps where groupId = &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @return the number of matching apps
+	 */
+	public int countByG_NotS(long groupId, int status);
+
+	/**
+	 * Returns the number of apps that the user has permission to view where groupId = &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @return the number of matching apps that the user has permission to view
+	 */
+	public int filterCountByG_NotS(long groupId, int status);
+
+	/**
 	 * Caches the app in the entity cache if it is enabled.
 	 *
 	 * @param app the app

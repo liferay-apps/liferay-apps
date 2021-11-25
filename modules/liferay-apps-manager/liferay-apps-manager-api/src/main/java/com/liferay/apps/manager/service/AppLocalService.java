@@ -33,11 +33,13 @@ import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.transaction.Isolation;
 import com.liferay.portal.kernel.transaction.Propagation;
 import com.liferay.portal.kernel.transaction.Transactional;
+import com.liferay.portal.kernel.util.*;
 import com.liferay.portal.kernel.util.OrderByComparator;
 
 import java.io.Serializable;
 
 import java.util.List;
+import java.util.Map;
 
 import org.osgi.annotation.versioning.ProviderType;
 
@@ -78,12 +80,15 @@ public interface AppLocalService
 	@Indexable(type = IndexableType.REINDEX)
 	public App addApp(App app);
 
+	@Indexable(type = IndexableType.REINDEX)
 	public App addApp(
 			long userId, String name, String description, String iconUrl,
 			String link, ServiceContext serviceContext)
 		throws PortalException;
 
 	public int countApps(long groupId);
+
+	public int countApps(long groupId, int status);
 
 	/**
 	 * Creates a new app with the primary key. Does not add the app to the database.
@@ -265,6 +270,13 @@ public interface AppLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public List<App> getApps(long groupId, int start, int end);
 
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<App> getAppsByStatus(long groupId, int status);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<App> getAppsByStatus(
+		long groupId, int status, int start, int end);
+
 	/**
 	 * Returns all the apps matching the UUID and company.
 	 *
@@ -333,9 +345,16 @@ public interface AppLocalService
 	@Indexable(type = IndexableType.REINDEX)
 	public App updateApp(App app);
 
+	@Indexable(type = IndexableType.REINDEX)
 	public App updateApp(
 			long userId, long appId, String name, String description,
 			String iconUrl, String link, ServiceContext serviceContext)
+		throws PortalException;
+
+	@Indexable(type = IndexableType.REINDEX)
+	public App updateStatus(
+			long userId, long appId, int status, ServiceContext serviceContext,
+			Map<String, Serializable> workflowContext)
 		throws PortalException;
 
 }

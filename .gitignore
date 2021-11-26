@@ -16,6 +16,8 @@
 /_etc
 /_scripts
 /_src
+/elasticsearch
+/kibana
 /bundles
 /gradle-*.properties
 /plugins-sdk/**/classes

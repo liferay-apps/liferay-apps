@@ -1,7 +1,7 @@
 <%@ include file="/init.jsp" %>
 
 <portlet:renderURL var="cancelUrl">
-    <portlet:param name="mvcRenderCommandName" value="/apps/view" />
+    <portlet:param name="mvcRenderCommandName" value="/apps/list" />
 </portlet:renderURL>
 <portlet:actionURL var="updateAppUrl" name="/apps/update"/>
 

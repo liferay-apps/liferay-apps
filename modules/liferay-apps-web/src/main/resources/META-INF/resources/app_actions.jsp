@@ -8,6 +8,14 @@
     long appId = appEntry.getAppId();
 %>
 <liferay-ui:icon-menu direction="left-side" icon="" markupView="lexicon" message="actions" showWhenSingleIcon="<%= true %>">
+    <%-- View --%>
+    <c:if test="<%= AppModelPermission.contains(permissionChecker, appId, ActionKeys.VIEW) %>">
+        <portlet:renderURL var="viewAppUrl">
+            <portlet:param name="mvcRenderCommandName" value="/apps/view" />
+            <portlet:param name="appId" value="<%= String.valueOf(appId) %>" />
+        </portlet:renderURL>
+        <liferay-ui:icon message="action.details" url="${viewAppUrl}" />
+    </c:if>
     <%-- Edit --%>
     <c:if test="<%= AppModelPermission.contains(permissionChecker, appId, ActionKeys.UPDATE) %>">
         <portlet:renderURL var="editAppUrl">

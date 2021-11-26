@@ -12,5 +12,6 @@ public class AppManagerPortletKeys {
 
 	public static final String VIEW_JSP = "/view.jsp";
 	public static final String EDIT_APP = "/edit_app.jsp";
+	public static final String VIEW_APP_JSP = "/view_app.jsp";
 
 }

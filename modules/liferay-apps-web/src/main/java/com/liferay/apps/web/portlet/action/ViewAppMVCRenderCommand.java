@@ -16,7 +16,6 @@ import javax.portlet.RenderResponse;
         immediate = true,
         property = {
                 "javax.portlet.name=" + AppManagerPortletKeys.APP_MANAGER,
-                "mvc.command.name=/",
                 "mvc.command.name=/apps/view"
         },
         service = MVCRenderCommand.class
@@ -28,7 +27,7 @@ public class ViewAppMVCRenderCommand implements MVCRenderCommand {
         long appId = ParamUtil.getLong(renderRequest, "appId");
         App app = appLocalService.fetchApp(appId);
         renderRequest.setAttribute("app", app);
-        return AppManagerPortletKeys.VIEW_JSP;
+        return AppManagerPortletKeys.VIEW_APP_JSP;
     }
 
     @Reference

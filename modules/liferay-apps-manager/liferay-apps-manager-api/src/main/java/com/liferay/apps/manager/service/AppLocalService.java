@@ -268,14 +268,21 @@ public interface AppLocalService
 	public List<App> getApps(long groupId);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<App> getApps(long groupId, int status);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public List<App> getApps(long groupId, int start, int end);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public List<App> getAppsByStatus(long groupId, int status);
+	public List<App> getApps(long groupId, int status, int start, int end);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public List<App> getAppsByStatus(
-		long groupId, int status, int start, int end);
+	public List<App> getApps(
+		long groupId, int status, int start, int end, OrderByComparator obc);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<App> getApps(
+		long groupId, int start, int end, OrderByComparator obc);
 
 	/**
 	 * Returns all the apps matching the UUID and company.

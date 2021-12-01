@@ -6,6 +6,7 @@ Export-Package:\
 	com.liferay.apps.manager.exception,\
 	com.liferay.apps.manager.model,\
 	com.liferay.apps.manager.service,\
-	com.liferay.apps.manager.service.persistence
+	com.liferay.apps.manager.service.persistence,\
+	com.liferay.apps.manager.util.comparator
 -check: EXPORTS
 -includeresource: META-INF/service.xml=../liferay-apps-manager-service/service.xml

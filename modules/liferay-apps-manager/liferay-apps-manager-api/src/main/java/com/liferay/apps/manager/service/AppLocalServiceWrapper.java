@@ -322,23 +322,39 @@ public class AppLocalServiceWrapper
 
 	@Override
 	public java.util.List<com.liferay.apps.manager.model.App> getApps(
+		long groupId, int status) {
+
+		return _appLocalService.getApps(groupId, status);
+	}
+
+	@Override
+	public java.util.List<com.liferay.apps.manager.model.App> getApps(
 		long groupId, int start, int end) {
 
 		return _appLocalService.getApps(groupId, start, end);
 	}
 
 	@Override
-	public java.util.List<com.liferay.apps.manager.model.App> getAppsByStatus(
-		long groupId, int status) {
+	public java.util.List<com.liferay.apps.manager.model.App> getApps(
+		long groupId, int status, int start, int end) {
 
-		return _appLocalService.getAppsByStatus(groupId, status);
+		return _appLocalService.getApps(groupId, status, start, end);
 	}
 
 	@Override
-	public java.util.List<com.liferay.apps.manager.model.App> getAppsByStatus(
-		long groupId, int status, int start, int end) {
+	public java.util.List<com.liferay.apps.manager.model.App> getApps(
+		long groupId, int status, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator obc) {
 
-		return _appLocalService.getAppsByStatus(groupId, status, start, end);
+		return _appLocalService.getApps(groupId, status, start, end, obc);
+	}
+
+	@Override
+	public java.util.List<com.liferay.apps.manager.model.App> getApps(
+		long groupId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator obc) {
+
+		return _appLocalService.getApps(groupId, start, end, obc);
 	}
 
 	/**

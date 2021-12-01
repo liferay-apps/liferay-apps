@@ -63,16 +63,24 @@ public class AppLocalServiceImpl extends AppLocalServiceBaseImpl {
 		return appPersistence.findByGroupId(groupId, start, end);
 	}
 
+	public List<App> getApps(long groupId, int start, int end, OrderByComparator obc) {
+		return appPersistence.findByGroupId(groupId, start, end, obc);
+	}
+
 	public int countApps(long groupId, int status) {
 		return appPersistence.countByG_S(groupId, status);
 	}
 
-	public List<App> getAppsByStatus(long groupId, int status) {
+	public List<App> getApps(long groupId, int status) {
 		return appPersistence.findByG_S(groupId, status);
 	}
 
-	public List<App> getAppsByStatus(long groupId, int status, int start, int end) {
+	public List<App> getApps(long groupId, int status, int start, int end) {
 		return appPersistence.findByG_S(groupId, status, start, end);
+	}
+
+	public List<App> getApps(long groupId, int status, int start, int end, OrderByComparator obc) {
+		return appPersistence.findByG_S(groupId, status, start, end, obc);
 	}
 
 	@Indexable(type = IndexableType.REINDEX)

@@ -288,18 +288,30 @@ public class AppLocalServiceUtil {
 		return getService().getApps(groupId);
 	}
 
+	public static List<App> getApps(long groupId, int status) {
+		return getService().getApps(groupId, status);
+	}
+
 	public static List<App> getApps(long groupId, int start, int end) {
 		return getService().getApps(groupId, start, end);
 	}
 
-	public static List<App> getAppsByStatus(long groupId, int status) {
-		return getService().getAppsByStatus(groupId, status);
-	}
-
-	public static List<App> getAppsByStatus(
+	public static List<App> getApps(
 		long groupId, int status, int start, int end) {
 
-		return getService().getAppsByStatus(groupId, status, start, end);
+		return getService().getApps(groupId, status, start, end);
+	}
+
+	public static List<App> getApps(
+		long groupId, int status, int start, int end, OrderByComparator obc) {
+
+		return getService().getApps(groupId, status, start, end, obc);
+	}
+
+	public static List<App> getApps(
+		long groupId, int start, int end, OrderByComparator obc) {
+
+		return getService().getApps(groupId, start, end, obc);
 	}
 
 	/**

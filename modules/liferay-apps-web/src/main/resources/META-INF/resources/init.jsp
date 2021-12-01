@@ -18,3 +18,4 @@
 <%@ page import="com.liferay.apps.manager.service.AppLocalServiceUtil" %>
 <%@ page import="com.liferay.apps.manager.constants.AppsActionKeys" %>
 <%@ page import="com.liferay.apps.web.constants.AppWebKeys" %>
+<%@ page import="com.liferay.apps.web.internal.security.permission.resource.AppModelPermission" %>

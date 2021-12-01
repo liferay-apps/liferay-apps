@@ -23,15 +23,17 @@
         <liferay-ui:search-container-results
                 results="<%= AppLocalServiceUtil.getApps(scopeGroupId, searchContainer.getStart(), searchContainer.getEnd()) %>"/>
         <liferay-ui:search-container-row className="com.liferay.apps.manager.model.App" modelVar="app" keyProperty="appId">
-            <liferay-ui:search-container-column-text name="app.appId" value="${app.appId}" />
-            <liferay-ui:search-container-column-text name="app.name" value="${app.name}" />
-            <liferay-ui:search-container-column-text name="app.description" value="${app.description}" />
-            <liferay-ui:search-container-column-text name="app.iconUrl" value="${app.iconUrl}" />
-            <liferay-ui:search-container-column-text name="app.link" value="${app.link}" />
-            <liferay-ui:search-container-column-jsp
-                    cssClass="entry-action-column"
-                    path="/app_actions.jsp"
-            />
+            <c:if test="<%= AppModelPermission.contains(permissionChecker, app.getAppId(), ActionKeys.VIEW) %>">
+                <liferay-ui:search-container-column-text name="app.appId" value="${app.appId}" />
+                <liferay-ui:search-container-column-text name="app.name" value="${app.name}" />
+                <liferay-ui:search-container-column-text name="app.description" value="${app.description}" />
+                <liferay-ui:search-container-column-text name="app.iconUrl" value="${app.iconUrl}" />
+                <liferay-ui:search-container-column-text name="app.link" value="${app.link}" />
+                <liferay-ui:search-container-column-jsp
+                        cssClass="entry-action-column"
+                        path="/app_actions.jsp"
+                />
+            </c:if>
         </liferay-ui:search-container-row>
         <liferay-ui:search-iterator markupView="lexicon" />
     </liferay-ui:search-container>
